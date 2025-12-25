@@ -18,7 +18,7 @@ function App() {
   const [wickets, setWickets] = useState(0);
   const [outPlayers, setOutPlayers] = useState([]);
   const [bowlers, setBowlers] = useState([
-    { id: 1, name: "Bowler 1", runs: 0, balls: 0, wickets: 0 }
+    { id: 1, name: "", runs: 0, balls: 0, wickets: 0 }
   ]);
   const [activeBowlerId, setActiveBowlerId] = useState(1);
   const [maxOvers, setMaxOvers] = useState(5);
@@ -116,11 +116,12 @@ setTarget(finalFirstInningsScore + 1);
       setOutPlayers([]);
       const s1 = prompt(`Enter Striker for ${teamName2}:`);
       const s2 = prompt(`Enter Non-Striker for ${teamName2}:`);
+      const nextBowler = prompt(`Enter Opening Bowler for ${teamName1}:`);
       setPlayers([
         { id: 1, name: s1 || "Batsman 1", runs: 0, balls: 0, isOnStrike: true },
         { id: 2, name: s2 || "Batsman 2", runs: 0, balls: 0, isOnStrike: false }
       ]);
-      setBowlers([{ id: Date.now(), name: "New Bowler", runs: 0, balls: 0, wickets: 0 }]);
+      setBowlers([{ id: Date.now(), name: nextBowler || "Bowler 1", runs: 0, balls: 0, wickets: 0 }]);
       setActiveBowlerId(Date.now());
     }
 
@@ -226,6 +227,20 @@ setTarget(finalFirstInningsScore + 1);
             <div className="col-md-6"><label>Striker</label><input className="form-control" placeholder="P1" onChange={(e) => { let p = [...players]; p[0].name = e.target.value; setPlayers(p); }} /></div>
             <div className="col-md-6"><label>Non-Striker</label><input className="form-control" placeholder="P2" onChange={(e) => { let p = [...players]; p[1].name = e.target.value; setPlayers(p); }} /></div>
             <div className="col-md-6"><label>Overs</label><input type="number" className="form-control" value={maxOvers} onChange={(e) => setMaxOvers(Number(e.target.value))} /></div>
+            
+
+<div className="col-md-6">
+  <label>Opening Bowler</label>
+  <input 
+    className="form-control" 
+    placeholder="Enter Bowler Name" 
+    onChange={(e) => {
+      let b = [...bowlers];
+      b[0].name = e.target.value; // Updates the first bowler in your state
+      setBowlers(b);
+    }} 
+  />
+</div>
             <button className="btn btn-primary mt-4" onClick={() => setIsMatchStarted(true)}>Start Match</button>
           </div>
         </div>
