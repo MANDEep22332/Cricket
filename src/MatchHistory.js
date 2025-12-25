@@ -7,7 +7,7 @@ const MatchHistory = () => {
     useEffect(() => {
         const fetchMatches = async () => {
             try {
-                const response = await fetch('http://localhost:3002/get-matches');
+                const response = await fetch('https://cricket-backend-4urk.onrender.com/get-matches');
                 const data = await response.json();
                 setMatches(data);
                 setLoading(false);
