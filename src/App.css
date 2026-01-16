@@ -4,6 +4,11 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: #f8f9fa;
+  display: flex;           /* Turns the body into a flex container */
+  flex-direction: column;  /* Keeps elements stacked vertically */
+  align-items: center;     /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  min-height: 100vh;
 }
 
 /* --- MOBILE VIEW (300px and up) --- */
@@ -123,4 +128,15 @@ body {
   background-color: #e3f2fd !important;
   border-left: 5px solid #0d6efd;
   font-weight: bold;
+}
+
+.toss-section {
+  border-left: 5px solid #ffc107;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.toss-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
